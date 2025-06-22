@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bitácora del Pelirrojo</title>
 
   <style>
-    /* PARALLAX BACKGROUND */
- body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.5) 100%),
-    url('fondo.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
-}
+    /* FONDO PARALLAX */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('fondo.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+      filter: brightness(0.60);
+    }
 
     /* Imagen fija lateral */
     .fixed-logo {
@@ -36,26 +35,25 @@
       pointer-events: none;
     }
 
-    /* Estilos generales */
+    /* Imagen como título superior */
+    .titulo-imagen {
+      position: relative;
+      display: block;
+      margin: 2rem auto 0 auto;
+      max-width: 90%;
+      height: auto;
+      z-index: 10;
+    }
+
     body {
       margin: 0;
-      padding-left: 140px; /* espacio para el logo */
+      padding-left: 140px;
       font-family: 'Arial', sans-serif;
       color: #fff;
       background-color: #000;
-         }
-
-    h1 {
-      font-family: 'Arial', sans-serif;
-      font-size: 3rem;
-      margin-top: 2rem;
-      text-align: center;
-      text-shadow: 2px 2px 5px black;
-      color: white;
     }
 
     
-
     .timeline {
       position: relative;
       width: 80%;
@@ -63,10 +61,10 @@
       margin: 2rem auto;
       padding-left: 30px;
       border-left: 4px solid #e63946;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.4);
       border-radius: 10px;
       padding: 2rem;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 
     .event {
@@ -142,64 +140,28 @@
       margin-bottom: 1rem;
     }
 
-    /* Responsive: reducir logo o esconderlo en móviles */
-    @media (max-width: 768px) {
-      body {
-        padding-left: 0;
-      }
-
-      .fixed-logo {
-        width: 600px;
-        left: 500px;
-        top: 100px;
-        transform: none;
-        opacity: 0.7;
-      }
-    }
-
-    @media (max-width: 500px) {
+    /* Responsive: ocultar logo si pantalla es estrecha */
+    @media (max-width: 1750px) {
       .fixed-logo {
         display: none;
+      }
+
+      body {
+        padding-left: 0;
       }
     }
   </style>
 </head>
 <body>
 
-<script>
-  function checkWidth() {
-  const logo = document.querySelector('.fixed-logo');
-  const timeline = document.querySelector('.timeline');
-  if (!logo || !timeline) return;
-
-  const windowWidth = window.innerWidth;
-  const timelineWidth = timeline.offsetWidth;
-
-  if (windowWidth < timelineWidth * 0.9) {
-    logo.style.display = 'none';
-    logo.style.opacity = '0';
-    logo.style.visibility = 'hidden';
-  } else {
-    logo.style.display = 'block';
-    logo.style.opacity = '1';
-    logo.style.visibility = 'visible';
-  }
-}
-
-  window.addEventListener('resize', checkWidth);
-  window.addEventListener('load', checkWidth);
-</script>
-
-
+  <!-- Logo lateral -->
   <img src="shanks_29.png" alt="Logo de Shanks" class="fixed-logo">
 
-  <!-- Fondo Parallax -->
-  <div class="parallax"></div>
+  <!-- Imagen como título -->
+  <img src="titulo-shanks.png" alt="Título Bitácora del Pelirrojo" class="titulo-imagen">
 
   <!-- Contenido -->
   <div class="timeline-container">
-    <h1>Bitácora del Pelirrojo</h1>
-
     <div class="timeline">
       <div class="event">
         <div class="label">Hace 39 años</div>
@@ -284,4 +246,5 @@
   </div>
 </body>
 </html>
+
 
